@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SISBI ::: Sistema de Gestión Bibliotecaria - Acceso</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link
+      rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/pages/acceso.css" />
+
+</head>
+
+
+<body>
+	
+	
+	 <div id="auth">
+      <div class="row h-100">
+        <div class="col-lg-5 col-12">
+          <div id="auth-left">
+            <div class="logo">
+                <a aria-current="page" th:href="@{/login}" 
+                  ><img
+                    src="assets/images/logo/LOGO-SISBI-min.png"
+                    alt="Logo"
+                    srcset="" style="height:100px !important;"
+                /></a>
+              </div>
+            <h1 class="auth-title">Acceso.</h1>
+            <p class="auth-subtitle mb-5">
+              Ingrese con las credenciales brindadas por su institución.
+            </p>
+            
+            
+            <form  th:action="@{/login}" method="post" id="formLogin"
+					class="formulario">
+					
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input   type="text"  class="form-control form-control-xl" placeholder="DNI / Usuario" name="username" autocomplete="off" required="required"/>
+                
+                <div class="form-control-icon">
+                  <i class="bi bi-person"></i>
+                </div>
+              </div>
+              <div class="form-group position-relative has-icon-left mb-4">
+                <input type="password" class="form-control form-control-xl"  placeholder="Contraseña" name="password"  required="required" />
+ 
+                <div class="form-control-icon">
+                  <i class="bi bi-shield-lock"></i>
+                </div>
+              </div>
+              <div class="form-check form-check-lg d-flex align-items-end">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                />
+                <label
+                  class="form-check-label text-gray-600"
+                  for="flexCheckDefault"
+                >
+                  Recordar mi acceso.
+                </label>
+              </div>
+       
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Acceder</button>
+              
+            </form>
+          
+              
+            <div
+              class="text-center mt-5 text-lg fs-4"
+              style="font-size: 1rem !important"
+            >
+              <p class="text-gray-600">
+                ¿No tiene una cuenta?
+                <a class="font-bold" aria-current="page" th:href="@{/login}">Regístrese</a>.
+              </p>
+              <p><a class="font-bold" aria-current="page" th:href="@{/login}">¿Olvidó su contraseña?</a>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 d-none d-lg-block">
+          <div id="auth-right"></div>
+        </div>
+      </div>
+    </div>
+	
+	
+	
+</body>
+</html>

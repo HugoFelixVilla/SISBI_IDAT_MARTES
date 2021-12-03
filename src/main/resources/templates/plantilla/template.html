@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head th:fragment="head">
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+	<!-- BARRA DE NAVEGACION -->
+	<div th:fragment="headerNav" id="sidebar" class="active">
+
+            
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo ">
+                            <a aria-current="page" th:href="@{/}">
+                                <img src="assets/images/logo_sisbi.svg" alt="Logo" />
+
+                            </a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="sidebar-menu">
+                    <ul class="menu">
+
+                        <li class="sidebar-item active ">
+                            <a aria-current="page" th:href="@{/login}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Acceder</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sidebar-item has-sub" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+                            <a aria-current="page" th:href="@{/}" class='sidebar-link'>
+                                <i class="bi bi-person-badge-fill"></i>
+                                <span>Usuarios</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item " >
+                                    <a aria-current="page" th:href="@{/persona}">Usuarios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="sidebar-item has-sub" sec:authorize="hasAnyAuthority('BIBLIOTECARIO')">
+                            <a aria-current="page" th:href="@{/}" class='sidebar-link'>
+                                <i class="bi bi-journal-bookmark-fill"></i>
+                                <span>Libros</span>
+                            </a>
+
+                            <ul class="submenu ">
+                                
+                                
+                                <li class="submenu-item " >
+                                    <a aria-current="page" th:href="@{/especialidad}">Especialidades</a>
+                                </li>
+                                <li class="submenu-item " >
+                                    <a aria-current="page"  th:href="@{/editorial}">Editoriales</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item has-sub" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+                            <a aria-current="page" th:href="@{/}" class='sidebar-link'>
+                                <i class="bi bi-grid-1x2-fill"></i>
+                                <span>Roles</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a aria-current="page" th:href="@{/rol}">Gestionar Roles</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a aria-current="page" th:href="@{/rol}">Agregar Rol</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+         
+
+
+                    </ul>
+                </div>
+              
+              
+              
+              
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+      
+       
+
+               
+            </div>
+          
+
+	
+	<header th:fragment="header" class='mb-3'>
+
+                <nav class="navbar navbar-expand navbar-light ">
+                    <div class="container-fluid">
+                        <a href="#" class="burger-btn d-block">
+                            <i class="bi bi-justify fs-3"></i>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent" sec:authorize="isAuthenticated()">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown me-1">
+                                    <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <i class='bi bi-envelope bi-sub fs-4 text-gray-600'></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <h6 class="dropdown-header">Mensajes</h6>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">No tiene mensajes nuevos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown me-3">
+                                    <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        <i class='bi bi-bell bi-sub fs-4 text-gray-600'></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <h6 class="dropdown-header">Notificaciones</h6>
+                                        </li>
+                                        <li><a class="dropdown-item">No tiene notificaciones</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="dropdown">
+                            
+                            
+                            
+                                <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="user-menu d-flex">
+                                        <div class="user-name text-end me-3">
+                                            <h6 class="mb-0 text-gray-600" sec:authentication="name">XXX</h6>
+                                            <p class="mb-0 text-sm text-gray-600">Bibliotecario</p>
+                                        </div>
+                                        <div class="user-img d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="assets/images/faces/1.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem;">
+                                    <li>
+                                        <h6 class="dropdown-header">Hola Valeria!</h6>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="icon-mid bi bi-person me-2"></i> Mi Perfil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="icon-mid bi bi-gear me-2"></i>
+                                            Configuraciones
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="icon-mid bi bi-wallet me-2"></i>
+                                            Préstamos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                    <!-- 
+                                        <a class="dropdown-item" href="~/login.html">
+                                            <i class="icon-mid bi bi-box-arrow-left me-2"></i> Cerrar Sesión
+                                        </a>
+                                         -->
+                                        <form th:action="@{/logout}" method="post">
+                                        
+									<button class="dropdown-item" type="submit"> <i class="icon-mid bi bi-box-arrow-left me-2"></i>Cerrar
+										Sesion</button>
+								</form>
+                                        
+                                        
+                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+      
+	</header>
+
+
+
+<!-- xxxxxxxxxxxx -->
+
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+
+
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				
+
+				<!-- ENLACES DEL MENÚ -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page" th:href="@{/}">Inicio</a></li>
+						<li class="nav-item"
+							sec:authorize="hasAnyAuthority('BIBLIOTECARIO')"><a
+							class="nav-link" th:href="@{/editorial}">Editorial</a></li>
+
+						<li class="nav-item"
+							sec:authorize="hasAnyAuthority('BIBLIOTECARIO')"><a
+							class="nav-link" th:href="@{/especialidad}">Especialidad</a></li>
+
+						 <li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+							<a
+							class="nav-link" th:href="@{/persona}">Personal</a></li>
+
+						 <li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+						<a class="nav-link"
+							th:href="@{/rol}">Rol</a></li>
+
+					</ul>
+
+
+					<ul class="navbar-nav nav-bar-right">
+						<li sec:authorize="!isAuthenticated()"><a
+							class="btn btn-outline-warning" th:href="@{/login}">Iniciar
+								Sesion </a>
+<!-- 								<a -->
+<!-- 							class="btn btn-outline-warning" th:href="@{/personal/nuevo}">Registrarse</a> -->
+								</li>
+
+						<li class="dropdown" sec:authorize="isAuthenticated()"><a
+							class="btn btn-outline-warning dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+							aria-expanded="false"> <span sec:authentication="name"></span>
+						</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							 
+								<form th:action="@{/logout}" method="post">
+									<button class="dropdown-item" type="submit">Cerrar
+										Sesion</button>
+								</form>
+							</div></li>
+
+					</ul>
+
+				</div>
+
+			</div>
+		</nav>
+
+		<!-- MENSAJES -->
+		<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success != null}">
+			<label th:text="${success}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+
+		</div>
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert" th:if="${danger != null}">
+			<label th:text="${danger}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			th:if="${warning != null}">
+			<label th:text="${warning}"></label>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+
+
+<!-- xxxxxxxxxxxx -->
+
+
+
+
+	<!-- CONTENIDO -->
+	<div class="container"></div>
+
+
+	<!-- PIE DE PAGINA -->
+	<footer th:fragment="footer"	>
+
+<div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start">
+                            <p> IDAT</p>
+                        </div>
+                        <div class="float-end">
+                            <p>
+                                2021 &copy; SISBI v.1.0.0 | Sistema de Gestión Bibliotecaria <span class="text-danger"></span>
+                                - <a href="#">DSI</a>
+                            </p>
+                        </div>
+                    </div>
+
+	</footer>
+
+
+
+
+</body>
+</html>

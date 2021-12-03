@@ -1,0 +1,242 @@
+:root{
+    --color-negro:#364E65;
+    --color-texto:#727C77;
+    --color-rojo:#ED0722;
+    --color-rgb-rojo:rgba(237,7,34,.21);
+    --color-rgb-celeste:rgba(55,147,246,.27);
+    --color-celeste:#3793F6;
+    --color-input:#EEF5F9;
+}
+
+.input-error{
+    border: 1px solid var(--color-rojo) !important;
+}
+
+/* Estilos generales */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul,ol{
+    list-style: none;
+}
+
+.contenedor-login{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+/* Estilos contenedor portada */
+.contenedor-portada{
+	display:block;
+}
+
+.contenedor-portada img{
+    margin:150px auto;
+}
+
+
+/* Estilos contenedor formularios */
+.contenedor-texto{
+    width: 560px;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    background: #99FF99;
+}
+
+.contenedor-form{
+    width: 95%;
+    padding: 20px 50px 50px 50px;
+    margin:150px auto;
+}
+
+.contenedor-form .titulo{    
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--color-negro);
+	display:block;
+	text-align: center;
+}
+
+/*Estilos formularios*/
+.formulario{
+    display: block;
+    margin-top: 30px;
+}
+
+.formulario .input-text{
+    padding: 14px 20px;
+    border: 1px solid transparent;
+    background: var(--color-input);
+    margin-bottom: 20px;
+    border-radius: 3px;
+    width: 100%;
+    outline: 0;
+    font-size: 14px;
+    color: var(--color-texto);
+}
+
+.formulario .grupo-input{
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.formulario .grupo-input .input-text{
+    padding-right: 60px;
+    margin-bottom: 0px;
+}
+
+.formulario .grupo-input .icono{
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 18px;
+    color: var(--color-texto);
+    right: 0;
+    outline: 0;
+}
+
+.formulario .grupo-input .icono.active{
+    color: var(--color-celeste);
+}
+
+.formulario .grupo-text:focus{
+    border: 1px solid green;
+}
+
+.formulario .btn{
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background: var(--color-celeste);
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-top: 30px;
+    outline: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.formulario .btn:hover{
+    background: #3285dd;
+}
+
+
+/* Estilos mensajes de error */
+.error-text{
+    background: var(--color-rgb-rojo);
+    border-radius: 4px;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.error-text p{
+    font-size: 13px;
+    color: var(--color-rojo);
+}
+
+.error-text.active{
+    display: block;
+}
+
+.cbx-error .cbx-marca{
+    -webkit-animation: cbx_error .2s ease-in-out infinite;
+    animation: cbx_error .2s ease-in-out infinite;
+    border: 1px solid var(--color-rojo);
+}
+
+@keyframes cbx_error{
+
+    0% {
+        -webkit-transform:rotateX(-5deg);
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        -webkit-transform: rotateX( 0deg) scale(.8);
+        transform: rotate(0deg) scale(.8);
+    }
+
+    100% {
+        -webkit-transform: rotateX( 5deg);
+        transform: rotateX(5deg);
+    }
+}
+
+/* Responsive */
+/* @media query - pantalla movil */
+
+@media screen and (max-width: 768px) {
+    .contenedor-login{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .contenedor-portada{
+        width: 100%;
+        height: 400%;
+        position: relative;
+    }
+
+    .contenedor-texto{
+        width:calc(100% - 30px);
+        position: relative;
+        background: #fff;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0,.08);
+        margin: auto;
+        margin-top: -50px;
+        border-radius: 7px;
+        margin-bottom: 40px;
+    }
+
+    .contenedor-form {
+        padding: 20px !important;
+    }
+
+    .contenedor-form .titulo {
+        font-size: 20px;
+    }
+
+    .contenedor-form .tabs-link{
+        margin-top: 40px;
+    }
+
+}
+
+/* @media query - tablet horizontal */
+
+@media screen and (max-width: 1024px) {
+
+    .contenedor-form{
+        padding: 50px;
+    }
+
+    .contenido-portada .portada-texto {
+        padding: 0px 30px;
+    }
+}
